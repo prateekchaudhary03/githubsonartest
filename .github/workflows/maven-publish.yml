@@ -15,6 +15,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 14
+    - name: Cache SonarQube packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar    
     - name: Cache the maven dependenices to speed up the build
       uses: actions/cache@v1
       with:
